@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9fafb;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* 打字效果的光标动画 */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* 添加Markdown内容容器样式 */
+.typewriter-container code {
+  white-space: pre-wrap;
+}
+
+.typewriter-container pre {
+  position: relative;
+  margin: 1em 0;
+  overflow: auto;
+}
+
+/* 按钮美化 */
+.typewriter-container button {
+  transition: all 0.2s ease;
+}
+
+.typewriter-container button:hover {
+  transform: translateY(-1px);
+} 
