@@ -8,6 +8,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
+  const [inviteCode, setInviteCode] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -15,6 +16,13 @@ const Register = () => {
     setError(null);
     setMessage(null);
     
+    // 邀请码校验
+    if (inviteCode !== 'cxx大人真厉害') {
+      setError('邀请码错误，无法注册');
+      setLoading(false);
+      return;
+    }
+
     try {
       const { error } = await supabase.auth.signUp({
         email,
@@ -79,6 +87,22 @@ const Register = () => {
               className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             <p className="mt-1 text-xs text-gray-500">密码必须至少包含6个字符</p>
+          </div>
+          
+          <div>
+            <label htmlFor="inviteCode" className="block text-sm font-medium text-gray-700">
+              邀请码
+            </label>
+            <input
+              id="inviteCode"
+              type="text"
+              value={inviteCode}
+              onChange={(e) => setInviteCode(e.target.value)}
+              required
+              placeholder="请输入邀请码"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
+            <p className="mt-1 text-xs text-gray-500">只有输入正确的邀请码才能注册</p>
           </div>
           
           <div>
